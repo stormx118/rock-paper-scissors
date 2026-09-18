@@ -33,4 +33,61 @@ function getHumanChoice(){
     let humanChoice=prompt("Let's play rock paper scissors game. Your turn to choose:",'');
     return humanChoice;
 }
-console.log(getHumanChoice());
+
+let humanScore=0;
+let computerScore=0;
+
+function playRound(compChoice=getComputerChoice(),humanChoice=getHumanChoice()){
+    humanChoice= humanChoice.toUpperCase();
+
+   if(humanChoice==="ROCK"){
+        if(compChoice==="Paper"){
+            console.log("You lose! Paper beats Rock");
+            computerScore++;
+        }
+
+        else if(compChoice==="Scissors"){
+            console.log("You win! Rock beats Scissors");
+            humanScore++;
+        }else{
+            console.log("You draw!");
+        }
+   }else if(humanChoice==="PAPER"){
+        if (compChoice==="Scissors"){
+            console.log("You lose! Scissors beats Paper");
+            computerScore++;
+        }
+        else if(compChoice==="Rock"){
+            console.log("You win! Paper beats Rock");
+            humanScore++;
+        }else{
+            console.log("You draw!");
+        }
+
+   }
+   
+   else if (humanChoice==="SCISSORS") {
+        if(compChoice==="Rock"){
+            console.log("You lose! Rock beats Scissors");
+            computerScore++
+        }
+        else if(compChoice==="Paper"){
+            console.log("You win! Scissors beats Paper.");
+            humanScore++;
+        }else {
+            console.log("You draw!");
+        }
+    }
+    
+}
+function playGame (){
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    console.log(`Computer Score: ${computerScore}`);
+    console.log(`Your Score: ${humanScore}`);
+
+}
+playGame();
