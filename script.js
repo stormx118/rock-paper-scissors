@@ -23,4 +23,14 @@ else{
 }
 return result;
 }
-console.log(getComputerChoice ());
+
+//To get human choice
+//Declare the getHumanChoice function
+//Create a new variable  called humanChoice
+//Prompt the user for the input and store it in humanChoice variable
+
+function getHumanChoice(){
+    let humanChoice=prompt("Let's play rock paper scissors game. Your turn to choose:",'');
+    return humanChoice;
+}
+console.log(getHumanChoice());
