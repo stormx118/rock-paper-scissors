@@ -43,25 +43,27 @@ function playRound(compChoice=getComputerChoice(),humanChoice=getHumanChoice()){
    if(humanChoice==="ROCK"){
         if(compChoice==="Paper"){
             console.log("You lose! Paper beats Rock");
-            computerScore++;
+            return "lose";
         }
 
         else if(compChoice==="Scissors"){
             console.log("You win! Rock beats Scissors");
-            humanScore++;
+            return "win";
         }else{
             console.log("You draw!");
+            return "draw";
         }
    }else if(humanChoice==="PAPER"){
         if (compChoice==="Scissors"){
             console.log("You lose! Scissors beats Paper");
-            computerScore++;
+            return "lose";
         }
         else if(compChoice==="Rock"){
             console.log("You win! Paper beats Rock");
-            humanScore++;
+            return "win";
         }else{
             console.log("You draw!");
+            return "draw";
         }
 
    }
@@ -69,25 +71,62 @@ function playRound(compChoice=getComputerChoice(),humanChoice=getHumanChoice()){
    else if (humanChoice==="SCISSORS") {
         if(compChoice==="Rock"){
             console.log("You lose! Rock beats Scissors");
-            computerScore++
+            return "lose";
         }
         else if(compChoice==="Paper"){
             console.log("You win! Scissors beats Paper.");
-            humanScore++;
+            return "win";
         }else {
             console.log("You draw!");
+            return "draw";
         }
     }
     
 }
 function playGame (){
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
+  
+    let r1=playRound();
+        if(r1==="win"){
+            humanScore++;
+        }
+        else if (r1==="lose"){
+            computerScore++;
+        }
+
+    let r2=playRound();
+        if(r2==="win"){
+            humanScore++;
+        }else if(r2==="lose"){
+            computerScore++;
+        }
+
+    let r3=playRound();
+        if(r3==="win"){
+            humanScore++;
+        }else if(r3==="lose"){
+            computerScore++;
+        }
+
+     let r4=playRound();
+        if(r4==="win"){
+            humanScore++;
+        }else if(r4==="lose"){
+            computerScore++;
+        }
+
+     let r5=playRound();
+        if(r5==="win"){
+            humanScore++;
+        }else if(r5==="lose"){
+            computerScore++;
+        }
+
+
+    
     console.log(`Computer Score: ${computerScore}`);
     console.log(`Your Score: ${humanScore}`);
+
+   
 
 }
 playGame();
