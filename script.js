@@ -1,11 +1,15 @@
-//START
-//Create getComputerChoice function
-//Create Computer Choice variable
-//Assign Math.random to generate three random number btn 1 to 3 then add 3 to randomly generate three choices
-//Round off to whole number
-//If computer choice = 1 then assign rock to result
-//Else if compChoice =2 assign  Scissors to result
-//Else compchoice =3 assign Paper to result
+const buttons=document.querySelectorAll("button");
+const scoreBoard=document.querySelector("div");
+const scoreResult=document.createElement("p");
+const contNAR=document.querySelector("body");
+
+
+contNAR.appendChild(scoreResult);
+
+let counter=0;
+let humanScore=0;
+let computerScore=0;
+
 
 
 function getComputerChoice(){
@@ -29,104 +33,107 @@ return result;
 //Create a new variable  called humanChoice
 //Prompt the user for the input and store it in humanChoice variable
 
-function getHumanChoice(){
-    let humanChoice=prompt("Let's play rock paper scissors game. Your turn to choose:",'');
-    return humanChoice;
+function getHumanChoice(e){
+    return e.target.className;
 }
 
-let humanScore=0;
-let computerScore=0;
 
-function playRound(compChoice=getComputerChoice(),humanChoice=getHumanChoice()){
-    humanChoice= humanChoice.toUpperCase();
 
-   if(humanChoice==="ROCK"){
+function playRound(compChoice,humanChoice){
+   
+
+   if(humanChoice==="rock"){
         if(compChoice==="Paper"){
-            console.log("You lose! Paper beats Rock");
+            scoreBoard.textContent=`Your Choice: Rock. \n Computer Choice: Scissors.\nYou lose! Paper beats Rock\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "lose";
         }
 
         else if(compChoice==="Scissors"){
-            console.log("You win! Rock beats Scissors");
+            scoreBoard.textContent=`Your Choice: Rock. \n Computer Choice: Scissors.\nYou win! Rock beats Scissors\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "win";
         }else{
-            console.log("You draw!");
+            scoreBoard.textContent=`Your Choice: Rock. \n Computer Choice: Rock.\nYou draw!\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "draw";
         }
-   }else if(humanChoice==="PAPER"){
+   }else if(humanChoice==="paper"){
         if (compChoice==="Scissors"){
-            console.log("You lose! Scissors beats Paper");
+            scoreBoard.textContent=`Your Choice: Paper. \n Computer Choice: Scissors.\nYou lose! Scissors beats Paper\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "lose";
         }
         else if(compChoice==="Rock"){
-            console.log("You win! Paper beats Rock");
+            scoreBoard.textContent=`Your Choice: Paper. \n Computer Choice: Rock.\nYou win! Paper beats Rock\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "win";
         }else{
-            console.log("You draw!");
+            scoreBoard.textContent=`Your Choice: Paper. \n Computer Choice: Paper.\nYou draw!\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "draw";
         }
 
    }
    
-   else if (humanChoice==="SCISSORS") {
+   else if (humanChoice==="scissors") {
         if(compChoice==="Rock"){
-            console.log("You lose! Rock beats Scissors");
+            scoreBoard.textContent=`Your Choice: Scissors. \n Computer Choice: Rock.\nYou lose! Rock beats Scissors.\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "lose";
         }
         else if(compChoice==="Paper"){
-            console.log("You win! Scissors beats Paper.");
+            scoreBoard.textContent= `Your Choice: Scissors. \n Computer Choice: Paper. \nYou win! Scissors beats Paper.\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "win";
+
         }else {
-            console.log("You draw!");
+            scoreBoard.textContent=`Your Choice: Scissors. \n Computer Choice: Scissors.\nYou draw!\n`;
+            scoreBoard.style.whiteSpace="pre-line";
             return "draw";
         }
     }
     
 }
-function playGame (){
-  
-    let r1=playRound();
-        if(r1==="win"){
-            humanScore++;
-        }
-        else if (r1==="lose"){
-            computerScore++;
-        }
+buttons.forEach(
+    button=> button.addEventListener("click",(e)=>{
+        const humanChoice= getHumanChoice(e);
+        const compChoice=getComputerChoice();
 
-    let r2=playRound();
-        if(r2==="win"){
-            humanScore++;
-        }else if(r2==="lose"){
-            computerScore++;
+        
+        let result=playRound(compChoice,humanChoice);;
+        counter++;
+        
+        
+        if(result==="win"){
+            humanScore++
+        }else if(result==="lose"){
+            computerScore++
         }
+     
+        if(counter===5){
+            if(computerScore>humanScore){
+                scoreResult.textContent=`Computer Score: ${computerScore}.\nYour Score: ${humanScore}.\n YOU LOSE`;
+                scoreResult.style.whiteSpace="pre-line";}
+            else if(computerScore<humanScore){
+                scoreResult.textContent=`Computer Score: ${computerScore}.\nYour Score: ${humanScore}.\n YOU WIN`;
+                scoreResult.style.whiteSpace="pre-line";
+            }
+            else{
+                            
+                scoreResult.textContent=`Computer Score: ${computerScore}.\nYour Score: ${humanScore}.\n YOU DRAW`;
+                scoreResult.style.whiteSpace="pre-line";}
 
-    let r3=playRound();
-        if(r3==="win"){
-            humanScore++;
-        }else if(r3==="lose"){
-            computerScore++;
-        }
-
-     let r4=playRound();
-        if(r4==="win"){
-            humanScore++;
-        }else if(r4==="lose"){
-            computerScore++;
-        }
-
-     let r5=playRound();
-        if(r5==="win"){
-            humanScore++;
-        }else if(r5==="lose"){
-            computerScore++;
-        }
-
-
+        setTimeout(()=>{
+            counter =0;
+            humanScore=0;
+            computerScore=0;
+            scoreResult.textContent="";
+        },2000)}
+    }
+                
     
-    console.log(`Computer Score: ${computerScore}`);
-    console.log(`Your Score: ${humanScore}`);
+    )
+)
 
-   
 
-}
-playGame();
