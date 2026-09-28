@@ -1,0 +1,56 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    min-height: 100vh;
+
+}
+.body-container{
+    background-color: rgba(68, 65, 65, 0.945);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    color: gold;
+    font-size: 3rem;
+    margin: 20px 0 20px 0;
+
+}
+button{
+    margin: 0 20px 0 20px;
+}
+
+.button-img{
+   height: 80px;
+   width: 80px;
+}
+.introductory-sentence{
+    font-size: 20px;
+    color: rgb(239, 239, 241);
+    margin-bottom: 30px;
+}
+.score-board{
+    font-size: 36px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.buttons{
+    margin-bottom: 20px;
+}
+.score-result{
+    display: flex;
+    gap: 30px;
+}
+span{
+    color: white;
+}
+img{
+    height: 100px;
+   width: 100px;
+}

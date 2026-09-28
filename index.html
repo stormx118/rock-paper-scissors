@@ -4,19 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rock paper scissors game</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="container">
-<button class="rock">Rock</button>
-<button class="paper">Paper</button>
-<button class="scissors">Scissors</button>
+<body>
 
-<div class="score-result"></div>
+<div class="body-container">
+    <h1>ROCK PAPER SCISSORS GAME</h1>
+    <p class="introductory-sentence"> You will be playing against computer best of five.Will you beat the computer?</p>
+
+    <div class="score-board">
+        <p>SCOREBOARD</p>
+        <p>YOU  <span class="user-score"></span> : COMPUTER  <span class="computer-score"></span> </p>
+        <p class="finalWinner"></p>
+    </div>  
+
+
+    <div class="buttons">
+        <button id="rock"><img src="./images/rock.png" alt="rock hand sign" class="button-img"></button>
+        <button id="paper"><img src="./images/paper.png" alt="paper hand sign"  class="button-img"></button>
+        <button id="scissors"><img src="./images/scissors1.png" alt="scissors hand sign"  class="button-img"></button>
+    </div>
+    <div class="score-result">
+
+
+
+    </div>
+
+</div>
 
 
 
 
-
-
-    <script src="script.js"></script>
+    
 </body>
 </html>
